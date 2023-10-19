@@ -8,6 +8,9 @@ import {DialogModule} from "primeng/dialog";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AddEditProductModule} from "./add-edit-product/add-edit-product.module";
 import {ToastModule} from "primeng/toast";
+import {RippleModule} from "primeng/ripple";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {ConfirmationService, MessageService} from "primeng/api";
 
 
 
@@ -18,15 +21,18 @@ import {ToastModule} from "primeng/toast";
     exports: [
         ProductComponent
     ],
-    imports: [
-        CommonModule,
-        HttpClientModule,
-        TableModule,
-        ButtonModule,
-        DialogModule,
-        BrowserAnimationsModule,
-        AddEditProductModule,
-        ToastModule
-    ]
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    TableModule,
+    ButtonModule,
+    DialogModule,
+    BrowserAnimationsModule,
+    AddEditProductModule,
+    ToastModule,
+    RippleModule,
+    ConfirmDialogModule
+  ],
+  providers: [MessageService, ConfirmationService]
 })
 export class ProductModule { }
