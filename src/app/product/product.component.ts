@@ -10,6 +10,7 @@ import {ProductService} from "./product.service";
 export class ProductComponent implements OnInit {
 
   products!: Product[];
+  displayModal: boolean = false;
   constructor(private _productService: ProductService) { }
 
   ngOnInit(): void {
@@ -23,5 +24,17 @@ export class ProductComponent implements OnInit {
       },
       error: console.log
     })
+  }
+
+  showAddModal() {
+    this.displayModal = true;
+  }
+
+  hideAddModal(isClosed: boolean) {
+    this.displayModal = !isClosed;
+  }
+
+  addProduct(response: any) {
+    this.products.unshift(response)
   }
 }
