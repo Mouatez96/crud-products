@@ -10,8 +10,13 @@ export class ProductService {
   apiUrl = "https://fakestoreapi.com/products";
   constructor(private _http: HttpClient) { }
 
-  getProducts()  {
-    return this._http.get<Product[]>(this.apiUrl);
+  getProducts(category: any)  {
+    if(category) {
+      return this._http.get<Product[]>(this.apiUrl+ `/Category/${category}`);
+    }else {
+      return this._http.get<Product[]>(this.apiUrl);
+    }
+
   }
 
   addProduct(product: Product, selectedProduct: any) {
@@ -24,5 +29,9 @@ export class ProductService {
 
   deleteProduct(id: number) {
     return this._http.delete(this.apiUrl+`/${id}`);
+  }
+
+  getCategories() {
+    return this._http.get<string[]>(this.apiUrl+ '/categories');
   }
 }
